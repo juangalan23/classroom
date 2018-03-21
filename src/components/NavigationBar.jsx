@@ -44,6 +44,8 @@ class NavigationBar extends React.Component {
         }
         return (
         <div>
+            <Router history={this.props.history} >
+                <nav className="navbar navbar-default"> 
 
             <Header
                 size='medium'>
@@ -61,27 +63,19 @@ class NavigationBar extends React.Component {
                         label='Menu'
                         icon={<Actions/>}>
                         <Anchor href='#'>
-                            First
+                            < Link to="/login"> Login </Link>
                         </Anchor>
                         <Anchor href='#'>
-                            Second
+                            < Link to="/signup"> Signup </Link>
                         </Anchor>
                         <Anchor href='#'>
-                            Third
+                            Logout
                         </Anchor>
                     </Menu>
                 </Box>
             </Header>
 
         
-
-                <Router history={this.props.history} >
-                <nav className="navbar navbar-default"> 
-                            <Link to="/" className="navbar-brand" > Classroom </Link> 
-                            <ul className="nav navbar-nav navbar-right"> 
-                                <li> < Link to="/signup"> Signup </Link> </li>
-                                <li> < Link to="/login"> Login </Link> </li>
-                            </ul>
                         <Switch>
                             <Route path="/teachermainview" component={TeacherMainView} />
                             {/* <Route path="/studentmainview" component={TeacherMainView} /> */}
