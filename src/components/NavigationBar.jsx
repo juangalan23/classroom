@@ -8,13 +8,14 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions/index';
 import TeacherMainView from './teachers/mainView.jsx';
 
+import "grommet/scss/hpinc/index.scss";
 import Header from 'grommet/components/Header';
 import Title from 'grommet/components/Title';
+import Headline from 'grommet/components/Headline';
 import Anchor from 'grommet/components/Anchor';
 import Menu from 'grommet/components/Menu';
 import Box from 'grommet/components/Box';
 import Actions from 'grommet/components/icons/base/Action.js';
-import { readdir } from 'fs';
 
 class NavigationBar extends React.Component {
     constructor(props) {
@@ -36,37 +37,44 @@ class NavigationBar extends React.Component {
             return < SignIn /> 
         }
     }
+    
     render() {
-        // NOTE: to input a grommet navbar here instead of our ugly ul
-        // console.log('auth ', this.props.auth)
+        const titleStyle = {
+            marginLeft: '50px'
+        }
         return (
         <div>
-            <Header fixed={true}
-                size='large'>
-                <Title>
-                    Sample Title
-                </Title>
+
+            <Header
+                size='medium'>
+                <Headline margin='large' style={titleStyle} >
+                    Jaqen
+                </Headline>
                 <Box flex={true}
+                    margin='large'
                     justify='end'
                     direction='row'
                     responsive={false}>
-                    <Menu icon={<Actions />}
-                    dropAlign={{"right": "right"}}>
-                    <Anchor href='#'
-                        className='active'>
-                        First
-                    </Anchor>
-                    <Anchor href='#'>
-                        Second
-                    </Anchor>
-                    <Anchor href='#'>
-                        Third
-                    </Anchor>
+                    <Menu 
+                        primary={false}
+                        direction='row'
+                        label='Menu'
+                        icon={<Actions/>}>
+                        <Anchor href='#'>
+                            First
+                        </Anchor>
+                        <Anchor href='#'>
+                            Second
+                        </Anchor>
+                        <Anchor href='#'>
+                            Third
+                        </Anchor>
                     </Menu>
                 </Box>
             </Header>
+
         
-            <div>
+
                 <Router history={this.props.history} >
                 <nav className="navbar navbar-default"> 
                             <Link to="/" className="navbar-brand" > Classroom </Link> 
@@ -84,7 +92,7 @@ class NavigationBar extends React.Component {
                         </Switch>
                 </nav>
                 </Router>
-            </div>
+
             </div>
         )
     }
